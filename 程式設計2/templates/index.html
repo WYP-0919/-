@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Weather Data</title>
+    <!-- 引入 Plotly 的 JavaScript 庫 -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+      .container {
+        width: 80%;
+        margin: 0 auto;
+        text-align: center;
+      }
+      h2 {
+        text-align: center; /* 將標題置中 */
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+      th,
+      td {
+        padding: 10px;
+        border: 1px solid #ccc;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="weather-chart"></div>
+
+    <script>
+      <div class="container">
+          <div id="plot">{{ plot_html|safe }}</div>
+
+          <h2>Temperature Data</h2>
+          <table>
+              <thead>
+              <tr>
+                  <th>Region</th>
+                  <th>Max Temperature (°C)</th>
+                  <th>Min Temperature (°C)</th>
+              </tr>
+              </thead>
+              <tbody>
+              {% for row in data %}
+              <tr>
+                  <td>{{ row['region'] }}</td>
+                  <td>{{ row['Max Temperature'] }}</td>
+                  <td>{{ row['Min Temperature'] }}</td>
+              </tr>
+              {% endfor %}
+              </tbody>
+          </table>
+      </div>
+
+      <footer>
+          © 2024 . All rights reserved.
+      </footer>
+    </script>
+  </body>
+</html>
